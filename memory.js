@@ -3,7 +3,7 @@ var current_images = new Array();
 var selection_one = null;
 var selection_two = null;
 var total_needed = null;
-var previous = null;
+var previous = false;
 
 images[0] = 'images/1.jpg' ;
 images[1] = 'images/2.jpg' ;
@@ -88,54 +88,47 @@ function hide_images()
 
 function select_image(cell)
 {
-  if (previous == null)
+  console.log(previous);
+
+  if (previous == false)
   {
     hide_images();
   }
   var select_id = cell.id;
-  console.log(cell.firstChild);
   var select_img = cell.firstChild;
+  var filename = $(cell).html();
   $(select_img).removeClass('opaque');
-  if (selection_one == null)
+  if (selection_one === null)
   {
-    selection_one = select_img;
-    selection_one_id = select_id
-    previous = select_image;
+    selection_one = filename;
+    selection_one_id = select_id;
+    previous = true;
+    selection_two = null;
+    console.log(selection_one);
 
   }
-  else if (selection_two == null)
+  else if (selection_two === null)
   {
-    selection_two = select_img;
-    selection_two_id = select_id
-    previous = select_image;
+    selection_two = filename;
+    selection_two_id = select_id;
+    previous = false;
 
     if (selection_one === selection_two)
     {
-      console.log('true')
+      console.log('match');
       td1 = document.getElementById(selection_one_id);
       td2 = document.getElementById(selection_two_id);
       $(td1).addClass('selected');
       $(td2).addClass('selected');
-      $(td1).firstChild.addClass('found');
-      $(td2).firstChild.addClass('found');
       var selected_tds = document.getElementsByClassName('selected');
       console.log(selected_tds);
-      selection_one = null;
-      selection_two = null;
-      previous = null;
-      console.log(selected_tds.length);
-      console.log(total_needed * 2);
       if (selected_tds.length == (total_needed * 2))
       {
         end_game();
       }
-    else
-    {
-      $(select_img).removeClass('opaque');
 
     }
-
-    }
+    selection_one = null;
 
   }
 }
