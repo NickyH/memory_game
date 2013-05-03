@@ -1,0 +1,53 @@
+.hide
+{
+  display: none;
+}
+
+.button
+{
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: blue;
+  color: white;
+}
+
+#welcome
+{
+  font-size: 20px;
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 5%;
+}
+
+td
+{
+  height: 200px;
+  width: 200px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 0.5em;
+  background-color: grey;
+}
+
+img
+{
+  height: 200px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.opaque
+{
+  opacity: 0;
+}
+
+table
+{
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 5%;
+  border: 1px solid grey;
+}
