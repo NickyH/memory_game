@@ -1,5 +1,9 @@
 var images = new Array();
 var current_images = new Array();
+var selection_one = null;
+var selection_two = null;
+var total_needed = null;
+var previous = null;
 
 images[0] = 'images/1.jpg' ;
 images[1] = 'images/2.jpg' ;
@@ -33,6 +37,8 @@ function createTable()
     new_col = document.createElement("td");
     new_col.className = "td"+col;
     new_col.innerHTML = "<img src=" + current_images[img_index + col] + ">";
+    new_col.setAttribute('id', img_index + col);
+    new_col.setAttribute('onclick', 'select_image(this)');
     console.log(img_index + col);
     new_row.appendChild(new_col);
     }
@@ -42,7 +48,6 @@ function createTable()
 
   table_space.appendChild(new_table);
   fade_images();
-
 }
 
 function get_images()
@@ -67,10 +72,75 @@ function randomize_images()
 
 function fade_images()
 {
-
   $("img").each(function() {
    $(this).fadeOut(1000).fadeIn().addClass("opaque");
 });
 
 }
 
+function hide_images()
+{
+  $("img").each(function() {
+   $(this).addClass("opaque");
+});
+
+}
+
+function select_image(cell)
+{
+  if (previous == null)
+  {
+    hide_images();
+  }
+  var select_id = cell.id;
+  console.log(cell.firstChild);
+  var select_img = cell.firstChild;
+  $(select_img).removeClass('opaque');
+  if (selection_one == null)
+  {
+    selection_one = select_img;
+    selection_one_id = select_id
+    previous = select_image;
+
+  }
+  else if (selection_two == null)
+  {
+    selection_two = select_img;
+    selection_two_id = select_id
+    previous = select_image;
+
+    if (selection_one === selection_two)
+    {
+      console.log('true')
+      td1 = document.getElementById(selection_one_id);
+      td2 = document.getElementById(selection_two_id);
+      $(td1).addClass('selected');
+      $(td2).addClass('selected');
+      $(td1).firstChild.addClass('found');
+      $(td2).firstChild.addClass('found');
+      var selected_tds = document.getElementsByClassName('selected');
+      console.log(selected_tds);
+      selection_one = null;
+      selection_two = null;
+      previous = null;
+      console.log(selected_tds.length);
+      console.log(total_needed * 2);
+      if (selected_tds.length == (total_needed * 2))
+      {
+        end_game();
+      }
+    else
+    {
+      $(select_img).removeClass('opaque');
+
+    }
+
+    }
+
+  }
+}
+
+function end_game()
+{
+  console.log('end');
+}

@@ -43,6 +43,11 @@ img
   opacity: 0;
 }
 
+.found
+{
+  opacity: 1;
+}
+
 table
 {
   width: 50%;
@@ -50,4 +55,9 @@ table
   margin-left: auto;
   margin-top: 5%;
   border: 1px solid grey;
+}
+
+td.selected
+{
+  background-color: red;
 }
