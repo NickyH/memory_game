@@ -11,16 +11,19 @@
 
 <body>
 
-<p id="welcome">
-  Memory Game
-</p>
+<div class='headspace'>
+  <div class='header'>
+    <p id="welcome">Tropical Island Memory Game</p>
+    <input id="rows" placeholder="Rows"></input>
+    <input id="cols" placeholder="Columns"></input>
+    <input id="num_submit" type='button' class="button" onclick="validate_table()" value="Play"/>
+    <p id='error' class='hide'>Must be an even number, please enter an even number of rows and columns</p>
+  </div>
+</div>
 
-<input id="rows"></input>
-<input id="cols"></input>
-<input id="num_submit" type='button' class="button" onclick="createTable()" value="Play"/>
-
-<div id="show_table"></div>
-
+<div id='game'>
+  <div id="show_table"></div>
+</div>
 
 </body>
 

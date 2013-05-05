@@ -1,25 +1,74 @@
+@import url(http://fonts.googleapis.com/css?family=Coming+Soon);
+
+
+.headspace
+{
+  background: #FFC604;
+  width: 100%;
+  height: 300px;
+}
+
+.hide
+{
+  display: none;
+}
+
+.header
+{
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .button
 {
-  width: 200px;
+  width: 100px;
   height: 40px;
+  border-radius: 10px;
+  background-color: #00D0FF;
+  float: left;
+  display: block;
+  margin-top: 15px;
+}
+
+.button:hover
+{
+  background-color: #FC226F;
+}
+
+input
+{
+  width: 70px;
+  height: 30px;
+  background-color: #D9CBA0;
+  font-size: 17px;
+  margin-right: 15px;
+  float: left;
   border-radius: 5px;
-  background-color: blue;
-  color: white;
+  margin-top: 15px;
 }
 
 #welcome
 {
   font-size: 20px;
-  width: 50%;
+  width: 90%;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 5%;
+  margin-top: 8%;
+  font-family: 'Coming Soon', cursive;
+}
+
+#game
+{
+  background-color: black;
+  height: 100%;
+  width 100%;
 }
 
 td
 {
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   border: 1px solid grey;
   border-radius: 5px;
   padding: 0.5em;
@@ -28,8 +77,8 @@ td
 
 img
 {
-  height: 200px;
-  width: 200px;
+  height: 100%;
+  width: 100%;
   border-radius: 5px;
 }
 
@@ -49,21 +98,21 @@ table
 
 td.selected
 {
-  background-color: red;
+  background-color: green;
 }
 
 .flip-container
 {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   position: relative;
   -webkit-perspective: 800px;
 }
 
 .flipper {
   position: absolute;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   -webkit-transform-style: preserve-3d;
   -webkit-transition: -webkit-transform 1.5s;
 }
@@ -77,18 +126,18 @@ td.selected
 {
   position: absolute;
   -webkit-backface-visibility: hidden;
-  -webkit-box-shadow: 0 2px 5px #666;
+  -webkit-box-shadow: 0 2px 3px #666;
 }
 
 .front
 {
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
 }
 
 .back
 {
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   -webkit-transform: rotateY(180deg);
 }

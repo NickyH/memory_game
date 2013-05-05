@@ -16,8 +16,25 @@ images[7] = 'images/8.jpg' ;
 images[8] = 'images/9.jpg' ;
 images[9] = 'images/10.jpg' ;
 
+function validate_table()
+{
+  var num_rows = document.getElementById('rows').value;
+  var num_cols = document.getElementById('cols').value;
+  console.log(num_cols * num_rows);
+  if ((num_cols * num_rows)%2 == 0 )
+  {
+    createTable();
+  }
+  else
+  {
+    var error = document.getElementById('error')
+    $(error).removeClass('hide');
+  }
+}
+
 function createTable()
 {
+  $('.headspace').slideUp();
   get_images();
   randomize_images();
   var table_space = document.getElementById('show_table');
@@ -52,7 +69,6 @@ function createTable()
   }
 
   table_space.appendChild(new_table);
-  // fade_images();
 }
 
 function get_images()
@@ -82,14 +98,6 @@ function fade_images()
 });
 
 }
-
-// function hide_images()
-// {
-//   $("img").each(function() {
-//    $(this).addClass('opaque');
-// });
-
-// }
 
 function select_image(cell)
 {
@@ -135,7 +143,6 @@ function select_image(cell)
 
     }
     selection_one = null;
-
   }
 }
 
@@ -154,5 +161,11 @@ function flip_all_images()
 
 function end_game()
 {
-  console.log('end');
+  $('.headspace').delay(1000).slideDown();
+  $('#game').delay(1000).slideUp();
+  $('#rows').val('').attr('placeholder', "Rows");
+  $('#cols').val('').attr('placeholder', "Columns");
+
+
+
 }
