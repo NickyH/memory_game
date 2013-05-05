@@ -36,8 +36,13 @@ function createTable()
     {
     new_col = document.createElement("td");
     new_col.className = "td"+col;
-    new_col.innerHTML = "<img src=" + current_images[img_index + col] + ">";
+    var flip_container = $("<div></div>").attr({'class': 'flip-container'}).appendTo($(new_col));
     new_col.setAttribute('id', img_index + col);
+    var div_flipper = $("<div></div>").attr({'class': 'flipper'}).appendTo($(flip_container));
+    var div_front = $('<div></div>').attr({"class": 'front side'});
+    var div_back = $('<div></div>').attr({"class": 'back side'}).append("<img src=" + current_images[img_index + col] + ">");
+    $(div_back).appendTo(div_flipper);
+    $(div_front).appendTo(div_flipper);
     new_col.setAttribute('onclick', 'select_image(this)');
     console.log(img_index + col);
     new_row.appendChild(new_col);
@@ -47,7 +52,7 @@ function createTable()
   }
 
   table_space.appendChild(new_table);
-  fade_images();
+  // fade_images();
 }
 
 function get_images()
@@ -78,13 +83,13 @@ function fade_images()
 
 }
 
-function hide_images()
-{
-  $("img").each(function() {
-   $(this).addClass("opaque");
-});
+// function hide_images()
+// {
+//   $("img").each(function() {
+//    $(this).addClass('opaque');
+// });
 
-}
+// }
 
 function select_image(cell)
 {
@@ -92,20 +97,21 @@ function select_image(cell)
 
   if (previous == false)
   {
-    hide_images();
+    flip_all_images();
   }
   var select_id = cell.id;
   var select_img = cell.firstChild;
-  var filename = $(cell).html();
-  $(select_img).removeClass('opaque');
+  var filename = $(select_img).children().children().html();
+  flip_img(cell);
+  console.log(filename);
+  console.log(select_img);
+
   if (selection_one === null)
   {
     selection_one = filename;
     selection_one_id = select_id;
     previous = true;
     selection_two = null;
-    console.log(selection_one);
-
   }
   else if (selection_two === null)
   {
@@ -131,6 +137,19 @@ function select_image(cell)
     selection_one = null;
 
   }
+}
+
+function flip_img(cell)
+{
+  cell.firstChild.firstChild.className += ' flipped';
+}
+
+function flip_all_images()
+{
+  var all_flipped = document.getElementsByClassName('flipper');
+  $(all_flipped).each(function() {
+   $(this).removeClass('flipped');
+});
 }
 
 function end_game()
