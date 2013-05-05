@@ -29,6 +29,7 @@ function validate_table()
   {
     var error = document.getElementById('error')
     $(error).removeClass('hide');
+    $('.instruct').hide();
   }
 }
 

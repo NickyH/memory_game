@@ -1,16 +1,18 @@
-@import url(http://fonts.googleapis.com/css?family=Coming+Soon);
+@import url(http://fonts.googleapis.com/css?family=Quicksand);
 
+html, body, ul, ol, li, form, fieldset, legend
+{
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+
+}
 
 .headspace
 {
-  background: #FFC604;
+  background: #DCDE79;
   width: 100%;
   height: 300px;
-}
-
-.hide
-{
-  display: none;
 }
 
 .header
@@ -20,27 +22,35 @@
   margin-left: auto;
 }
 
+.nav
+{
+  width: 30%;
+  height: 100px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .button
 {
   width: 100px;
   height: 40px;
   border-radius: 10px;
-  background-color: #00D0FF;
-  float: left;
+  background-color: #DB6974;
+  float: right;
   display: block;
   margin-top: 15px;
 }
 
 .button:hover
 {
-  background-color: #FC226F;
+  background-color: #81AEBA;
 }
 
 input
 {
-  width: 70px;
+  width: 80px;
   height: 30px;
-  background-color: #D9CBA0;
+  background-color: #FFE8B7;
   font-size: 17px;
   margin-right: 15px;
   float: left;
@@ -50,19 +60,59 @@ input
 
 #welcome
 {
-  font-size: 20px;
+  font-size: 30px;
   width: 90%;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 8%;
-  font-family: 'Coming Soon', cursive;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 30px;
+  text-align: center;
 }
 
 #game
 {
-  background-color: black;
+  background-color: #333333;
   height: 100%;
-  width 100%;
+  width: 100%;
+  margin-top: 0;
+  padding: 30px;
+}
+
+#show_table
+{
+  width: 60%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+}
+
+.instruct
+{
+  display: block;
+  margin: 20px;
+  width: 30%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+#error
+{
+  display: block;
+  margin: 20px;
+  width: 30%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  color: #DB5A50;
+  font-weight: bolder;
+}
+
+#error.hide
+{
+  display: none;
 }
 
 td
