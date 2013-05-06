@@ -147,8 +147,12 @@ function select_image(cell)
     {
       td1 = document.getElementById(selection_one_id);
       td2 = document.getElementById(selection_two_id);
-      $(td1).addClass('selected');
-      $(td2).addClass('selected');
+      $(td1).delay(1000).queue(function(next){
+        $(this).addClass("selected");
+        $(td2).addClass("selected");
+        next();
+        });
+      // $(td2).delay(1000).addClass('selected');
       var found_img = file_name;
       $('#found').append(found_img);
       var selected_tds = document.getElementsByClassName('selected');
