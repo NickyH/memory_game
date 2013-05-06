@@ -12,7 +12,7 @@ html, body, ul, ol, li, form, fieldset, legend
 {
   background: #DCDE79;
   width: 100%;
-  height: 300px;
+  height: auto;
 }
 
 .header
@@ -25,20 +25,24 @@ html, body, ul, ol, li, form, fieldset, legend
 .nav
 {
   width: 30%;
-  height: 100px;
+  min-height: 60px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 20px;
 }
 
 .button
 {
-  width: 100px;
-  height: 40px;
+  width: 80px;
+  height: 30px;
+  line-height: 10px;
+  vertical-align: middle;
   border-radius: 10px;
   background-color: #DB6974;
   float: right;
   display: block;
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .button:hover
@@ -48,10 +52,10 @@ html, body, ul, ol, li, form, fieldset, legend
 
 input
 {
-  width: 80px;
-  height: 30px;
+  width: 60px;
+  height: 20px;
   background-color: #FFE8B7;
-  font-size: 17px;
+  font-size: 14px;
   margin-right: 15px;
   float: left;
   border-radius: 5px;
@@ -76,16 +80,25 @@ input
   height: 100%;
   width: 100%;
   margin-top: 0;
-  padding: 30px;
+  padding-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #show_table
 {
-  width: 60%;
+  width: 100%;
   height: auto;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1em;
+  margin-bottom: 30px;
+}
+
+.messages
+{
+  display: block;
+
 }
 
 .instruct
@@ -96,23 +109,57 @@ input
   margin-right: auto;
   margin-left: auto;
   text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 20px;
+  margin-top: 20px;
 }
 
 #error
 {
   display: block;
+  font-size: 17px;
   margin: 20px;
-  width: 30%;
+  width: 35%;
   margin-right: auto;
   margin-left: auto;
   text-align: center;
   color: #DB5A50;
-  font-weight: bolder;
+  font-weight: bold;
+  margin-bottom: 0;
+  padding-bottom: 20px;
+  margin-top: 20px;
 }
 
 #error.hide
 {
   display: none;
+}
+
+#found
+{
+  float: left;
+  width: 100px;
+  min-height: 80px;
+  background-color: #303C5C;
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-top: 5%;
+  box-shadow: 2px 1px 2px #81AEBA;
+}
+
+#found.hide
+{
+  display: none;
+}
+
+#found img
+{
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 td
@@ -139,7 +186,6 @@ img
 
 table
 {
-  width: 50%;
   margin-right: auto;
   margin-left: auto;
   margin-top: 5%;

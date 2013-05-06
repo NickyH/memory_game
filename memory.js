@@ -28,7 +28,7 @@ function validate_table()
   else
   {
     var error = document.getElementById('error')
-    $(error).removeClass('hide');
+    $(error).slideDown().removeClass('hide');
     $('.instruct').hide();
   }
 }
@@ -36,6 +36,7 @@ function validate_table()
 function createTable()
 {
   $('.headspace').slideUp();
+  $('#found').removeClass('hide').slideDown();
   get_images();
   randomize_images();
   var table_space = document.getElementById('show_table');
@@ -110,21 +111,21 @@ function select_image(cell)
   }
   var select_id = cell.id;
   var select_img = cell.firstChild;
-  var filename = $(select_img).children().children().html();
+  var file_name = $(select_img).children().children().html();
   flip_img(cell);
-  console.log(filename);
+  console.log(file_name);
   console.log(select_img);
 
   if (selection_one === null)
   {
-    selection_one = filename;
+    selection_one = file_name;
     selection_one_id = select_id;
     previous = true;
     selection_two = null;
   }
   else if (selection_two === null)
   {
-    selection_two = filename;
+    selection_two = file_name;
     selection_two_id = select_id;
     previous = false;
 
@@ -135,6 +136,8 @@ function select_image(cell)
       td2 = document.getElementById(selection_two_id);
       $(td1).addClass('selected');
       $(td2).addClass('selected');
+      var found_img = file_name;
+      $('#found').append(found_img);
       var selected_tds = document.getElementsByClassName('selected');
       console.log(selected_tds);
       if (selected_tds.length == (total_needed * 2))

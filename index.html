@@ -20,13 +20,17 @@
     <input id="cols" placeholder="Columns"></input>
     <input id="num_submit" type='button' class="button" onclick="validate_table()" value="Play"/>
   </div>
+  <div class='messages'>
     <p class='instruct'>Enter the number of rows and columns for the game, then press play!</p>
-    <p id='error' class='hide'>Must be an even number, please enter an even number of rows and columns</p>
+    <p id='error' class='hide'>Must multiply to an even number, the game needs pairs! Try again.</p>
+  </div>
 </div>
 
 <div id='game'>
+  <div id='found' class='hide'></div>
   <div id="show_table"></div>
 </div>
+
 
 </body>
 
