@@ -4,6 +4,7 @@ var selection_one = null;
 var selection_two = null;
 var total_needed = null;
 var previous = false;
+var clicks = 0;
 
 images[0] = 'images/1.jpg' ;
 images[1] = 'images/2.jpg' ;
@@ -15,13 +16,23 @@ images[6] = 'images/7.jpg' ;
 images[7] = 'images/8.jpg' ;
 images[8] = 'images/9.jpg' ;
 images[9] = 'images/10.jpg' ;
+images[10] = 'images/11.jpg' ;
+images[11] = 'images/12.jpg' ;
+images[12] = 'images/13.jpg' ;
+images[13] = 'images/14.jpg' ;
+images[14] = 'images/15.jpg' ;
+images[15] = 'images/16.jpg' ;
+images[16] = 'images/17.jpg' ;
+images[17] = 'images/18.jpg' ;
+images[18] = 'images/19.jpg' ;
+images[19] = 'images/20.jpg' ;
+
 
 function validate_table()
 {
   var num_rows = document.getElementById('rows').value;
   var num_cols = document.getElementById('cols').value;
-  console.log(num_cols * num_rows);
-  if ((num_cols * num_rows)%2 == 0 )
+  if ((num_cols * num_rows)%2 == 0 && num_cols * num_rows <= images.length)
   {
     createTable();
   }
@@ -37,8 +48,10 @@ function createTable()
 {
   $('.headspace').slideUp();
   $('#found').removeClass('hide').slideDown();
-  get_images();
+  $('#clicks').removeClass('hide').slideDown();
+  $('#reset').removeClass('hide');
   randomize_images();
+  get_images();
   var table_space = document.getElementById('show_table');
   table_space.innerHTML = '';
   var num_rows = document.getElementById('rows').value;
@@ -63,7 +76,6 @@ function createTable()
     $(div_back).appendTo(div_flipper);
     $(div_front).appendTo(div_flipper);
     new_col.setAttribute('onclick', 'select_image(this)');
-    console.log(img_index + col);
     new_row.appendChild(new_col);
     }
     img_index = parseInt(img_index) + parseInt(num_rows);
@@ -83,14 +95,14 @@ function get_images()
 
 function randomize_images()
 {
-    for (var i = current_images.length - 1; i > 0; i--)
+    for (var i = images.length - 1; i > 0; i--)
     {
       var j = Math.floor(Math.random() * (i + 1));
-      var temp = current_images[i];
-      current_images[i] = current_images[j];
-      current_images[j] = temp;
+      var temp = images[i];
+      images[i] = images[j];
+      images[j] = temp;
     }
-    return current_images;
+    return images;
 }
 
 function fade_images()
@@ -103,7 +115,9 @@ function fade_images()
 
 function select_image(cell)
 {
-  console.log(previous);
+  clicks += 1
+  var clicks_text = '<p>CLICKS</p>' + clicks;
+  $('#clicks').empty().append(clicks_text);
 
   if (previous == false)
   {
@@ -113,8 +127,6 @@ function select_image(cell)
   var select_img = cell.firstChild;
   var file_name = $(select_img).children().children().html();
   flip_img(cell);
-  console.log(file_name);
-  console.log(select_img);
 
   if (selection_one === null)
   {
@@ -122,16 +134,17 @@ function select_image(cell)
     selection_one_id = select_id;
     previous = true;
     selection_two = null;
+    $(cell).attr('onclick', '');
   }
   else if (selection_two === null)
   {
     selection_two = file_name;
     selection_two_id = select_id;
     previous = false;
+    $(cell).attr('onclick', '');
 
     if (selection_one === selection_two)
     {
-      console.log('match');
       td1 = document.getElementById(selection_one_id);
       td2 = document.getElementById(selection_two_id);
       $(td1).addClass('selected');
@@ -139,7 +152,6 @@ function select_image(cell)
       var found_img = file_name;
       $('#found').append(found_img);
       var selected_tds = document.getElementsByClassName('selected');
-      console.log(selected_tds);
       if (selected_tds.length == (total_needed * 2))
       {
         end_game();
@@ -160,6 +172,10 @@ function flip_all_images()
   var all_flipped = document.getElementsByClassName('flipper');
   $(all_flipped).each(function() {
    $(this).removeClass('flipped');
+});
+  var add_onclick = document.getElementsByTagName('td');
+  $(add_onclick).each(function() {
+   this.setAttribute('onclick', 'select_image(this)');
 });
 }
 

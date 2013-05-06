@@ -5,7 +5,11 @@ html, body, ul, ol, li, form, fieldset, legend
   margin: 0;
   padding: 0;
   font-family: 'Quicksand', sans-serif;
+}
 
+#num_submit.button
+{
+  display: block;
 }
 
 .headspace
@@ -39,15 +43,22 @@ html, body, ul, ol, li, form, fieldset, legend
   vertical-align: middle;
   border-radius: 10px;
   background-color: #DB6974;
-  float: right;
+  float: left;
   display: block;
   margin-top: 15px;
   margin-bottom: 15px;
+  box-shadow: 2px 1px 2px grey;
+  border: 1px solid grey;
 }
 
 .button:hover
 {
   background-color: #81AEBA;
+}
+
+.button.hide
+{
+  display: none;
 }
 
 input
@@ -72,6 +83,22 @@ input
   margin-top: 0;
   padding: 30px;
   text-align: center;
+  position: relative;
+  text-shadow: 1px 1px 1px grey;
+}
+
+#welcome:after {
+    content: 'Tropical Island Memory Game';
+    display: block;
+    height: 1em;
+    position: absolute;
+    bottom: 0.1em;
+    left: 0;
+    right: 0;
+    -webkit-transform: scaleY(-1);
+    opacity: 0.3;
+    color: #91D9D9;
+    text-shadow: 1px 1px 1px grey;
 }
 
 #game
@@ -87,17 +114,20 @@ input
 
 #show_table
 {
-  width: 100%;
+  width: 60%;
   height: auto;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1em;
   margin-bottom: 30px;
+  display: inline-block;
 }
 
 .messages
 {
   display: block;
+  margin-top: 20px;
+  padding-top: 20px;
 
 }
 
@@ -112,6 +142,16 @@ input
   margin-bottom: 0;
   padding-bottom: 20px;
   margin-top: 20px;
+}
+
+#dash
+{
+  width: 150px;
+  min-height: 300px;
+  display: inline-block;
+  margin-top: 5%;
+  vertical-align: top;
+  margin-left: 5%;
 }
 
 #error
@@ -143,11 +183,47 @@ input
   background-color: #303C5C;
   border-radius: 5px;
   margin-left: 20px;
-  margin-top: 5%;
+  margin-top: 5px;
   box-shadow: 2px 1px 2px #81AEBA;
+  display: block;
 }
 
 #found.hide
+{
+  display: none;
+}
+
+#clicks
+{
+  display: block;
+  float: left;
+  width: 100px;
+  height: 80px;
+  background-color: #DB5A50;
+  color: white;
+  font-size: 35px;
+  text-align: center;
+  line-height: 50px;
+  text-shadow: 2px 2px grey;
+  border-radius: 5px;
+  margin-left: 20px;
+  box-shadow: 2px 1px 2px #81AEBA;
+  padding-bottom: 10px;
+}
+
+#clicks p
+{
+  background-color: #DB5A50;
+  color: white;
+  font-size: 15px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  text-align: center;
+  line-height: 15px;
+  text-shadow: 2px 2px grey;
+}
+
+#clicks.hide
 {
   display: none;
 }
@@ -164,8 +240,8 @@ input
 
 td
 {
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
   border: 1px solid grey;
   border-radius: 5px;
   padding: 0.5em;
@@ -199,16 +275,16 @@ td.selected
 
 .flip-container
 {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   position: relative;
   -webkit-perspective: 800px;
 }
 
 .flipper {
   position: absolute;
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
   -webkit-transform-style: preserve-3d;
   -webkit-transition: -webkit-transform 1.5s;
 }
@@ -227,13 +303,13 @@ td.selected
 
 .front
 {
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
 }
 
 .back
 {
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
   -webkit-transform: rotateY(180deg);
 }
