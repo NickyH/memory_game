@@ -32,7 +32,7 @@ function validate_table()
 {
   var num_rows = document.getElementById('rows').value;
   var num_cols = document.getElementById('cols').value;
-  if ((num_cols * num_rows)%2 == 0 && num_cols * num_rows <= images.length)
+  if ((num_cols * num_rows)%2 == 0 && num_cols * num_rows <= images.length && num_cols * num_rows >= 16)
   {
     createTable();
   }
@@ -50,6 +50,7 @@ function createTable()
   $('#found').removeClass('hide').slideDown();
   $('#clicks').removeClass('hide').slideDown();
   $('#reset').removeClass('hide');
+  $('#hint').removeClass('hide');
   randomize_images();
   get_images();
   var table_space = document.getElementById('show_table');
@@ -183,13 +184,22 @@ function flip_all_images()
 });
 }
 
+function get_hint()
+{
+  var hint = document.getElementsByClassName('flipper');
+  $(hint).each(function() {
+  $(this).addClass('flipped');
+  $(this).delay(1000).queue(function(next){
+    $(this).removeClass("flipped");
+    next();
+    });
+  });
+}
+
 function end_game()
 {
   $('.headspace').delay(1000).slideDown();
   $('#game').delay(1000).slideUp();
   $('#rows').val('').attr('placeholder', "Rows");
   $('#cols').val('').attr('placeholder', "Columns");
-
-
-
 }

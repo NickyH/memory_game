@@ -62,6 +62,12 @@ input#reset
   margin-left: 20px;
 }
 
+input#hint
+{
+  width: 100px;
+  margin-left: 20px;
+}
+
 .button.hide
 {
   display: none;

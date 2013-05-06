@@ -22,13 +22,14 @@
   </div>
   <div class='messages'>
     <p class='instruct'>Enter the number of rows and columns for the game, then press play!</p>
-    <p id='error' class='hide'>Must multiply to an even number with a maximum of 20 cards, the game needs pairs! Try again.</p>
+    <p id='error' class='hide'>Must multiply to an even number with a maximum of 20 cards and minimum 16, the game needs pairs! Try again.</p>
   </div>
 </div>
 
 <div id='game'>
   <div id='dash'>
     <input type="button" id='reset' class='button hide' value="Reset" onClick="document.location.reload(true)" />
+    <input type="button" id='hint' class='button hide' value="Hint" onClick="get_hint()" />
     <div id='clicks' class='hide'><p>CLICKS</P>0</div>
     <div id='found' class='hide'></div>
   </div>
