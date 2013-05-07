@@ -41,6 +41,8 @@ function validate_table()
     var error = document.getElementById('error')
     $(error).slideDown().removeClass('hide');
     $('.instruct').hide();
+    $('#rows').val('').attr('placeholder', "Rows");
+    $('#cols').val('').attr('placeholder', "Columns");
   }
 }
 
@@ -251,4 +253,15 @@ function end_game()
   $('#game').delay(5000).slideUp();
   $('#rows').val('').attr('placeholder', "Rows");
   $('#cols').val('').attr('placeholder', "Columns");
+  end_message();
+}
+
+function end_message()
+{
+  console.log('message');
+  $('#congrats').removeClass('hide');
+  $('#congrats').delay(3000).queue(function(next){
+    $('#congrats').fadeOut(5000).addClass('hide');
+    next();
+    });
 }

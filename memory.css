@@ -36,6 +36,11 @@ html, body, ul, ol, li, form, fieldset, legend
   margin-bottom: 20px;
 }
 
+#rows, #cols
+{
+  margin-left: 30px;
+}
+
 .button
 {
   width: 80px;
@@ -44,12 +49,20 @@ html, body, ul, ol, li, form, fieldset, legend
   vertical-align: middle;
   border-radius: 10px;
   background-color: #DB6974;
-  float: left;
+  float: leftt;
   display: block;
   margin-top: 15px;
   margin-bottom: 15px;
   box-shadow: 2px 1px 2px grey;
   border: 1px solid grey;
+}
+
+.button#num_submit
+{
+  width: 100px;
+  margin-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .button:hover
@@ -80,7 +93,6 @@ input
   height: 20px;
   background-color: #FFE8B7;
   font-size: 14px;
-  margin-right: 15px;
   float: left;
   border-radius: 5px;
   margin-top: 15px;
@@ -97,7 +109,8 @@ input
   padding: 30px;
   text-align: center;
   position: relative;
-  text-shadow: 1px 1px 1px grey;
+  text-shadow: 2px 2px 2px grey;
+  color: #FA3113;
 }
 
 #welcome:after {
@@ -112,6 +125,21 @@ input
     opacity: 0.3;
     color: #91D9D9;
     text-shadow: 1px 1px 1px grey;
+}
+
+#name
+{
+  font-size: 15px;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  text-shadow: 2px 2px 2px grey;
+  color: #FA3113;
 }
 
 #game
@@ -147,13 +175,15 @@ input
 .instruct
 {
   display: block;
+  font-size: 20px;
   margin: 20px;
-  width: 30%;
+  width: 40%;
   margin-right: auto;
   margin-left: auto;
   text-align: center;
   margin-bottom: 0;
   padding-bottom: 20px;
+  padding-top: 30px;
   margin-top: 20px;
 }
 
@@ -202,6 +232,26 @@ input
 }
 
 #found.hide
+{
+  display: none;
+}
+
+#congrats
+{
+  float: left;
+  font-size: 30px;
+  color: #006C80;
+  width: 100px;
+  min-height: 100px;
+  background-color: #303C5C;
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-top: 5px;
+  box-shadow: 2px 1px 2px #81AEBA;
+  display: block;
+}
+
+#congrats.hide
 {
   display: none;
 }
