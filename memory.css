@@ -1,0 +1,386 @@
+@import url(http://fonts.googleapis.com/css?family=Quicksand);
+
+html, body, ul, ol, li, form, fieldset, legend
+{
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+}
+
+#num_submit.button
+{
+  display: block;
+}
+
+.headspace
+{
+  background: #DCDE79;
+  width: 100%;
+  height: auto;
+  padding-bottom: 100px;
+}
+
+.header
+{
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.nav
+{
+  width: 30%;
+  min-height: 60px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+}
+
+#rows, #cols
+{
+  margin-left: 30px;
+}
+
+.button
+{
+  width: 80px;
+  height: 30px;
+  line-height: 10px;
+  vertical-align: middle;
+  border-radius: 10px;
+  background-color: #DB6974;
+  float: leftt;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  box-shadow: 2px 1px 2px grey;
+  border: 1px solid grey;
+}
+
+.button#num_submit
+{
+  width: 100px;
+  margin-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.button:hover
+{
+  background-color: #81AEBA;
+}
+
+input#reset
+{
+  width: 100px;
+  margin-left: 20px;
+}
+
+input#hint
+{
+  width: 100px;
+  margin-left: 20px;
+}
+
+.button.hide
+{
+  display: none;
+}
+
+input
+{
+  width: 60px;
+  height: 20px;
+  background-color: #FFE8B7;
+  font-size: 14px;
+  float: left;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+#welcome
+{
+  font-size: 30px;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 30px;
+  text-align: center;
+  position: relative;
+  text-shadow: 2px 2px 2px grey;
+  color: #FA3113;
+}
+
+#welcome:after {
+    content: 'Tropical Island Memory Game';
+    display: block;
+    height: 1em;
+    position: absolute;
+    bottom: 0.1em;
+    left: 0;
+    right: 0;
+    -webkit-transform: scaleY(-1);
+    opacity: 0.3;
+    color: #91D9D9;
+    text-shadow: 1px 1px 1px grey;
+}
+
+#name
+{
+  font-size: 15px;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  text-shadow: 2px 2px 2px grey;
+  color: #FA3113;
+}
+
+#game
+{
+  background-color: #333333;
+  height: 100%;
+  width: 100%;
+  margin-top: 0;
+  padding-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#show_table
+{
+  width: 60%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 30px;
+  display: inline-block;
+}
+
+.messages
+{
+  display: block;
+  margin-top: 20px;
+  padding-top: 20px;
+
+}
+
+.instruct
+{
+  display: block;
+  font-size: 20px;
+  margin: 20px;
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 20px;
+  padding-top: 30px;
+  margin-top: 20px;
+}
+
+#dash
+{
+  width: 150px;
+  min-height: 300px;
+  display: inline-block;
+  margin-top: 5%;
+  vertical-align: top;
+  margin-left: 5%;
+}
+
+#error
+{
+  display: block;
+  font-size: 17px;
+  margin: 20px;
+  width: 35%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  color: #DB5A50;
+  font-weight: bold;
+  margin-bottom: 0;
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+
+#error.hide
+{
+  display: none;
+}
+
+#found
+{
+  float: left;
+  width: 100px;
+  min-height: 100px;
+  background-color: #303C5C;
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-top: 5px;
+  box-shadow: 2px 1px 2px #81AEBA;
+  display: block;
+}
+
+#found.hide
+{
+  display: none;
+}
+
+#congrats
+{
+  float: left;
+  font-size: 30px;
+  color: #006C80;
+  width: 100px;
+  min-height: 100px;
+  background-color: #303C5C;
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-top: 5px;
+  box-shadow: 2px 1px 2px #81AEBA;
+  display: block;
+}
+
+#congrats.hide
+{
+  display: none;
+}
+
+#clicks
+{
+  display: block;
+  float: left;
+  width: 100px;
+  height: 80px;
+  background-color: #DB5A50;
+  color: white;
+  font-size: 35px;
+  text-align: center;
+  line-height: 50px;
+  text-shadow: 2px 2px grey;
+  border-radius: 5px;
+  margin-left: 20px;
+  box-shadow: 2px 1px 2px #81AEBA;
+  padding-bottom: 10px;
+}
+
+#clicks p
+{
+  background-color: #DB5A50;
+  color: white;
+  font-size: 15px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  text-align: center;
+  line-height: 15px;
+  text-shadow: 2px 2px grey;
+}
+
+#clicks.hide
+{
+  display: none;
+}
+
+#found img
+{
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+td
+{
+  height: 100px;
+  width: 100px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 0.5em;
+  background-color: grey;
+}
+
+img
+{
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.opaque
+{
+  opacity: 0;
+}
+
+table
+{
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 5%;
+  border: 1px solid grey;
+}
+
+td.hit1
+{
+  background-color: #9280F9;
+}
+
+td.hit2
+{
+  background-color: white;
+}
+
+td.selected
+{
+  background-color: green;
+}
+
+.flip-container
+{
+  width: 100px;
+  height: 100px;
+  position: relative;
+  -webkit-perspective: 800px;
+}
+
+.flipper {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 1.5s;
+}
+
+.flipped
+{
+  -webkit-transform: rotateY(180deg);
+}
+
+.side
+{
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  -webkit-box-shadow: 0 2px 3px #666;
+}
+
+.front
+{
+  height: 100px;
+  width: 100px;
+}
+
+.back
+{
+  height: 100px;
+  width: 100px;
+  -webkit-transform: rotateY(180deg);
+}
