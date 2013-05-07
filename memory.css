@@ -17,6 +17,7 @@ html, body, ul, ol, li, form, fieldset, legend
   background: #DCDE79;
   width: 100%;
   height: auto;
+  padding-bottom: 100px;
 }
 
 .header
@@ -276,6 +277,16 @@ table
   margin-left: auto;
   margin-top: 5%;
   border: 1px solid grey;
+}
+
+td.hit1
+{
+  background-color: #9280F9;
+}
+
+td.hit2
+{
+  background-color: white;
 }
 
 td.selected

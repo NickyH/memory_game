@@ -32,7 +32,7 @@ function validate_table()
 {
   var num_rows = document.getElementById('rows').value;
   var num_cols = document.getElementById('cols').value;
-  if ((num_cols * num_rows)%2 == 0 && num_cols * num_rows <= images.length && num_cols * num_rows >= 16)
+  if ((num_cols * num_rows)%2 == 0 && num_cols * num_rows <= images.length && num_cols * num_rows >= 12)
   {
     createTable();
   }
@@ -58,17 +58,16 @@ function createTable()
   var num_rows = document.getElementById('rows').value;
   var num_cols = document.getElementById('cols').value;
   var new_table = document.createElement("table");
-  var new_row, new_col;
-  var img_index = 0
+  var img_index = 0;
   for( var row = 0; row < num_rows; row++ )
   {
-    new_row = document.createElement("tr");
+    var new_row = document.createElement("tr");
     new_row.className = "tr"+row;
     new_table.appendChild(new_row);
     for( var col = 0; col < num_cols; col++ )
     {
-    new_col = document.createElement("td");
-    new_col.className = "td"+col;
+    var new_col = document.createElement("td");
+    // new_col.className = "td"+col;
     var flip_container = $("<div></div>").attr({'class': 'flip-container'}).appendTo($(new_col));
     new_col.setAttribute('id', img_index + col);
     var div_flipper = $("<div></div>").attr({'class': 'flipper'}).appendTo($(flip_container));
@@ -79,19 +78,28 @@ function createTable()
     new_col.setAttribute('onclick', 'select_image(this)');
     new_row.appendChild(new_col);
     }
-    img_index = parseInt(img_index) + parseInt(num_rows);
-
-  }
-
+    img_index = parseInt(img_index) + parseInt(num_cols);
+    console.log("img_index=" + img_index);
+    }
   table_space.appendChild(new_table);
 }
 
 function get_images()
 {
   var num_rows = document.getElementById('rows').value;
-  total_needed = ((num_rows * num_rows)/2);
-  current_images = images.slice(0,total_needed);
+  var num_cols = document.getElementById('cols').value;
+  total_needed = ((num_rows * num_cols)/2);
+  current_images = images.slice(0, total_needed);
   current_images = current_images.concat(current_images);
+  for (var i = current_images.length - 1; i > 0; i--)
+    {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = current_images[i];
+      current_images[i] = current_images[j];
+      current_images[j] = temp;
+    }
+    console.log(current_images);
+    return current_images;
 }
 
 function randomize_images()
@@ -103,7 +111,6 @@ function randomize_images()
       images[i] = images[j];
       images[j] = temp;
     }
-    return images;
 }
 
 function fade_images()
@@ -148,16 +155,12 @@ function select_image(cell)
     {
       td1 = document.getElementById(selection_one_id);
       td2 = document.getElementById(selection_two_id);
-      $(td1).delay(1000).queue(function(next){
-        $(this).addClass("selected");
-        $(td2).addClass("selected");
-        next();
-        });
-      // $(td2).delay(1000).addClass('selected');
+      flash_cells(td1, td2);
       var found_img = file_name;
       $('#found').append(found_img);
       var selected_tds = document.getElementsByClassName('selected');
-      if (selected_tds.length == (total_needed * 2))
+      console.log(selected_tds.length);
+      if (selected_tds.length === ((total_needed -1) * 2))
       {
         end_game();
       }
@@ -188,18 +191,64 @@ function get_hint()
 {
   var hint = document.getElementsByClassName('flipper');
   $(hint).each(function() {
-  $(this).addClass('flipped');
-  $(this).delay(1000).queue(function(next){
-    $(this).removeClass("flipped");
+  var td = $(this).parent().parent();
+  if ($(td).attr('class') === undefined )
+    {
+    $(this).addClass('flipped');
+    $(this).delay(1000).queue(function(next){
+      $(this).removeClass("flipped");
+        next();
+      });
+      }
+    });
+}
+
+function show_all()
+{
+  var hint = document.getElementsByClassName('flipper');
+  $(hint).each(function() {
+  $(this).delay(1000).addClass('flipped');
+  });
+}
+
+function flash_cells(td1, td2)
+{
+  $(td1).delay(100).queue(function(next){
+    $(this).addClass("hit1");
+    $(td2).addClass("hit1");
     next();
     });
-  });
+  $(td1).delay(200).queue(function(next){
+    $(this).removeClass("hit1");
+    $(td2).removeClass("hit1");
+    $(this).addClass("hit2");
+    $(td2).addClass("hit2");
+    next();
+    });
+  $(td1).delay(200).queue(function(next){
+    $(this).removeClass("hit2");
+    $(td2).removeClass("hit2");
+    $(this).addClass("hit1");
+    $(td2).addClass("hit1");
+    next();
+    });
+  $(td1).delay(200).queue(function(next){
+    $(this).removeClass("hit1");
+    $(td2).removeClass("hit1");
+    next();
+    });
+  $(td1).delay(200).queue(function(next){
+    $(this).addClass("selected");
+    $(td2).addClass("selected");
+    next();
+    });
 }
 
 function end_game()
 {
-  $('.headspace').delay(1000).slideDown();
-  $('#game').delay(1000).slideUp();
+  show_all();
+  $('.headspace').delay(5000).slideDown();
+  $('#game').delay(5000).slideUp();
   $('#rows').val('').attr('placeholder', "Rows");
   $('#cols').val('').attr('placeholder', "Columns");
 }
