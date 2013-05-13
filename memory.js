@@ -48,9 +48,14 @@ function validate_table()
 
 function createTable()
 {
-  $('.headspace').slideUp();
-  $('#found').removeClass('hide').slideDown();
+  clicks = 0
+  var clicks_text = '<p>CLICKS</p>' + clicks;
+  $('#clicks').empty().append(clicks_text);
   $('#clicks').removeClass('hide').slideDown();
+  $('.headspace').slideUp();
+  $('#game').slideDown();
+  $('#found').removeClass('hide').slideDown();
+  $('#found').empty();
   $('#reset').removeClass('hide');
   $('#hint').removeClass('hide');
   randomize_images();
@@ -64,12 +69,11 @@ function createTable()
   for( var row = 0; row < num_rows; row++ )
   {
     var new_row = document.createElement("tr");
-    new_row.className = "tr"+row;
+    // new_row.className = "tr"+row;
     new_table.appendChild(new_row);
     for( var col = 0; col < num_cols; col++ )
     {
     var new_col = document.createElement("td");
-    // new_col.className = "td"+col;
     var flip_container = $("<div></div>").attr({'class': 'flip-container'}).appendTo($(new_col));
     new_col.setAttribute('id', img_index + col);
     var div_flipper = $("<div></div>").attr({'class': 'flipper'}).appendTo($(flip_container));
@@ -81,7 +85,6 @@ function createTable()
     new_row.appendChild(new_col);
     }
     img_index = parseInt(img_index) + parseInt(num_cols);
-    console.log("img_index=" + img_index);
     }
   table_space.appendChild(new_table);
 }
@@ -100,7 +103,6 @@ function get_images()
       current_images[i] = current_images[j];
       current_images[j] = temp;
     }
-    console.log(current_images);
     return current_images;
 }
 
@@ -159,9 +161,8 @@ function select_image(cell)
       td2 = document.getElementById(selection_two_id);
       flash_cells(td1, td2);
       var found_img = file_name;
-      $('#found').append(found_img);
+      $('#found').append(found_img).append(found_img);
       var selected_tds = document.getElementsByClassName('selected');
-      console.log(selected_tds.length);
       if (selected_tds.length === ((total_needed -1) * 2))
       {
         end_game();
@@ -184,8 +185,11 @@ function flip_all_images()
    $(this).removeClass('flipped');
 });
   var add_onclick = document.getElementsByTagName('td');
-  $(add_onclick).each(function() {
-   this.setAttribute('onclick', 'select_image(this)');
+    $(add_onclick).each(function() {
+      if ($(this).attr('class') !== 'selected')
+  {
+    this.setAttribute('onclick', 'select_image(this)');
+  }
 });
 }
 
@@ -249,8 +253,8 @@ function flash_cells(td1, td2)
 function end_game()
 {
   show_all();
-  $('.headspace').delay(5000).slideDown();
-  $('#game').delay(5000).slideUp();
+  $('.headspace').delay(4000).slideDown();
+  $('#game').delay(4000).slideUp();
   $('#rows').val('').attr('placeholder', "Rows");
   $('#cols').val('').attr('placeholder', "Columns");
   end_message();
@@ -258,10 +262,11 @@ function end_game()
 
 function end_message()
 {
-  console.log('message');
+  var average = Math.ceil(clicks/(total_needed * 2));
   $('#congrats').removeClass('hide');
+  $('#congrats').text('Nice work...That only took you ' + clicks + ' clicks...That\'s an average of ' + average + ' clicks per square');
   $('#congrats').delay(3000).queue(function(next){
-    $('#congrats').fadeOut(5000).addClass('hide');
+    $('#congrats').fadeOut(4000).addClass('hide');
     next();
     });
 }
