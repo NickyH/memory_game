@@ -12,6 +12,17 @@ html, body, ul, ol, li, form, fieldset, legend
   display: block;
 }
 
+#game-top
+{
+  width: 100%;
+  height: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  float: left;
+  margin-left: 5%;
+}
+
 .headspace
 {
   background: #DCDE79;
@@ -65,7 +76,7 @@ html, body, ul, ol, li, form, fieldset, legend
   margin-bottom: 15px;
 }
 
-.button:hover
+.button:hover, input#hint:hover, input#reset:hover
 {
   background-color: #81AEBA;
 }
@@ -74,12 +85,16 @@ input#reset
 {
   width: 100px;
   margin-left: 20px;
+  float: left;
+  background-color: #FF9646;
 }
 
 input#hint
 {
   width: 100px;
   margin-left: 20px;
+  float: left;
+  background-color: #FF3A6A;
 }
 
 .button.hide
@@ -159,7 +174,7 @@ input
   height: auto;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 1em;
+  margin-top: 10px;
   margin-bottom: 30px;
   display: inline-block;
 }
@@ -192,9 +207,9 @@ input
   width: 150px;
   min-height: 300px;
   display: inline-block;
-  margin-top: 5%;
   vertical-align: top;
   margin-left: 5%;
+  float: left;
 }
 
 #error
@@ -227,7 +242,7 @@ input
   border-radius: 5px;
   margin-left: 20px;
   margin-top: 5px;
-  box-shadow: 2px 1px 2px #81AEBA;
+  box-shadow: 2px 1px 2px white;
   display: block;
 }
 
@@ -239,16 +254,17 @@ input
 #congrats
 {
   float: left;
-  font-size: 30px;
+  font-size: 17px;
   color: white;
-  width: 300px;
-  min-height: 100px;
-  background-color: #303C5C;
+  width: auto;
+  min-height: 30px;
+  background-color: #37AC72;
   border-radius: 5px;
-  margin-left: auto;
+  margin-left: 20px;
   margin-top: auto;
   box-shadow: 2px 1px 2px #81AEBA;
   display: block;
+  padding: 10px;
 }
 
 #congrats.hide
@@ -262,7 +278,7 @@ input
   float: left;
   width: 100px;
   height: 80px;
-  background-color: #DB5A50;
+  background-color: #ADCD37;
   color: white;
   font-size: 35px;
   text-align: center;
@@ -270,13 +286,13 @@ input
   text-shadow: 2px 2px grey;
   border-radius: 5px;
   margin-left: 20px;
-  box-shadow: 2px 1px 2px #81AEBA;
+  box-shadow: 2px 1px 2px white;
   padding-bottom: 10px;
 }
 
 #clicks p
 {
-  background-color: #DB5A50;
+  background-color: #ADCD37;
   color: white;
   font-size: 15px;
   margin-bottom: 5px;
@@ -293,10 +309,12 @@ input
 
 #found img
 {
-  width: 80px;
-  height: 80px;
+  width: 41px;
+  height: 41px;
   border-radius: 5px;
-  margin: 10px;
+  margin-left: 6px;
+  margin-top: 5px;
+  box-shadow: 1px 1px 1px white;
 }
 
 td
@@ -325,7 +343,7 @@ table
 {
   margin-right: auto;
   margin-left: auto;
-  margin-top: 5%;
+  margin-top: 5px;
   border: 1px solid grey;
 }
 

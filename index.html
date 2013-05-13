@@ -28,10 +28,12 @@
 </div>
 
 <div id='game'>
-  <div id='dash'>
-    <p id='congrats' class='hide'></p>
-    <input type="button" id='reset' class='button hide' value="Reset" onClick="document.location.reload(true)" />
+  <div id='game-top'>
+  <input type="button" id='reset' class='button hide' value="Reset" onClick="document.location.reload(true)" />
     <input type="button" id='hint' class='button hide' value="Hint" onClick="get_hint()" />
+    <p id='congrats' class='hide'></p>
+  </div>
+   <div id='dash'>
     <div id='clicks' class='hide'><p>CLICKS</P>0</div>
     <div id='found' class='hide'></div>
   </div>

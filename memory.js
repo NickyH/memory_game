@@ -49,11 +49,13 @@ function validate_table()
 function createTable()
 {
   clicks = 0
+  var clicks_text = '<p>CLICKS</p>' + clicks;
+  $('#clicks').empty().append(clicks_text);
+  $('#clicks').removeClass('hide').slideDown();
   $('.headspace').slideUp();
   $('#game').slideDown();
   $('#found').removeClass('hide').slideDown();
   $('#found').empty();
-  $('#clicks').removeClass('hide').slideDown();
   $('#reset').removeClass('hide');
   $('#hint').removeClass('hide');
   randomize_images();
@@ -159,7 +161,7 @@ function select_image(cell)
       td2 = document.getElementById(selection_two_id);
       flash_cells(td1, td2);
       var found_img = file_name;
-      $('#found').append(found_img);
+      $('#found').append(found_img).append(found_img);
       var selected_tds = document.getElementsByClassName('selected');
       if (selected_tds.length === ((total_needed -1) * 2))
       {
@@ -260,10 +262,11 @@ function end_game()
 
 function end_message()
 {
+  var average = Math.ceil(clicks/(total_needed * 2));
   $('#congrats').removeClass('hide');
-  $('#congrats').text('Nice work...That only took you ' + clicks + ' clicks');
+  $('#congrats').text('Nice work...That only took you ' + clicks + ' clicks...That\'s an average of ' + average + ' clicks per square');
   $('#congrats').delay(3000).queue(function(next){
-    $('#congrats').fadeOut(3000).addClass('hide');
+    $('#congrats').fadeOut(4000).addClass('hide');
     next();
     });
 }
